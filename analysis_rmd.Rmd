@@ -1,0 +1,34 @@
+---
+title: "Sales Analysis Script Documentation"
+author: "Kessar"
+date: "2026-10-24"
+output: html_document
+---
+
+**AI Assistance Declaration:** I used Gemini for code block formatting and section organization. Prompts used: See Appendix.md. I verified outputs using self spot-checks and Markdown preview tools. All final calculations are done by myself. I am responsible for the accuracy and originality of this work.
+
+# Purpose
+The `sales_analysis.R` script processes raw synthetic transaction data to calculate monthly revenue totals and generates a bar chart of the results.
+
+## Inputs
+* `synthetic_sales.csv`: A comma-separated values file containing `Date`, `ProductID`, and `Revenue`.
+
+## Outputs
+* A cleaned data frame grouped by month.
+* A `.png` bar chart visualizing monthly revenue.
+
+## Code Example
+Below is an example of how the script loads and processes the data:
+
+```r
+library(dplyr)
+library(readr)
+
+# Load data
+sales_data <- read_csv("data/synthetic_sales.csv")
+
+# Clean and aggregate
+monthly_summary <- sales_data %>%
+  group_by(Month) %>%
+  summarise(Total_Revenue = sum(Revenue))
+```
